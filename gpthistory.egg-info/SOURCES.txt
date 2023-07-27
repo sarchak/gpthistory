@@ -1,3 +1,5 @@
+LICENSE.md
+README.md
 setup.py
 gpthistory/__init__.py
 gpthistory/gpthistory.py

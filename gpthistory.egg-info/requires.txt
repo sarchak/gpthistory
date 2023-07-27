@@ -1,1 +1,5 @@
 Click
+python-dotenv
+openai
+pandas
+numpy
