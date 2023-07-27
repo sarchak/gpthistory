@@ -70,7 +70,7 @@ gpthistory search "chatbot"
 ## Author
 
 Your Name
-Twitter: [Twitter/X](https://x.com/shrikar84)
+Twitter: [shrikar84](https://x.com/shrikar84)
 
 ## Feedback and Contributions
 
