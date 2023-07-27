@@ -20,7 +20,9 @@ pip install -e .
 
 ## Download the conversation history
 Unfortunately, there is no way to programmatically get the conversation history. As as work around export
-the conversations by going to the Setting Section
+the conversations by going to the Setting Section. One you get the email from OpenAI download and unzip the folder
+which contains the conversations.json file
+
 <img width="681" alt="SCR-20230726-ugkl" src="https://github.com/sarchak/gpthistory/assets/839293/212e5733-e0cf-4e4b-b45c-e1daaaeeaa4f">
 
 ## Indexing and Search
