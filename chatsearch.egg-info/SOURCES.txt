@@ -1,9 +1,0 @@
-setup.py
-chatsearch/__init__.py
-chatsearch/chatsearch.py
-chatsearch.egg-info/PKG-INFO
-chatsearch.egg-info/SOURCES.txt
-chatsearch.egg-info/dependency_links.txt
-chatsearch.egg-info/entry_points.txt
-chatsearch.egg-info/requires.txt
-chatsearch.egg-info/top_level.txt
