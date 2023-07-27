@@ -2,6 +2,7 @@
 
 `gpthistory` is a Python package that provides a powerful tool for indexing and searching ChatGPT conversations. This package allows users to build an index from chat data files, generate embeddings for efficient searching, and perform searches to find relevant conversations based on keywords.
 
+
 ## Installation
 
 You can easily install `gpthistory` via pip:
@@ -16,6 +17,12 @@ git clone git@github.com:sarchak/gpthistory.git
 cd gpthistory
 pip install -e .
 ```
+
+## Download the conversation history
+Unfortunately, there is no way to programmatically get the conversation history. As as work around export
+the conversations by going to the Setting Section
+<img width="681" alt="SCR-20230726-ugkl" src="https://github.com/sarchak/gpthistory/assets/839293/212e5733-e0cf-4e4b-b45c-e1daaaeeaa4f">
+
 ## Indexing and Search
 [![asciicast](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8.svg)](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8)
 ### Indexing
