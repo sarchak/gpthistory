@@ -10,8 +10,14 @@ You can easily install `gpthistory` via pip:
 pip install gpthistory
 ```
 
+```bash
+# Installing from souce
+git clone git@github.com:sarchak/gpthistory.git
+cd gpthistory
+pip install -e .
+```
 ## Indexing and Search
-
+[![asciicast](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8.svg)](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8)
 ### Indexing
 
 The `build_index` command allows you to build an index from your chat data files. The tool extracts relevant text parts from each chat entry and stores them in the index along with their associated chat IDs and section IDs.
@@ -55,7 +61,7 @@ gpthistory search "chatbot"
 ## Author
 
 Your Name
-Email: shrikar84@gmail.com
+Twitter: [Twitter/X](https://x.com/shrikar84)
 
 ## Feedback and Contributions
 
