@@ -25,6 +25,11 @@ which contains the conversations.json file
 
 <img width="681" alt="SCR-20230726-ugkl" src="https://github.com/sarchak/gpthistory/assets/839293/212e5733-e0cf-4e4b-b45c-e1daaaeeaa4f">
 
+## Setting up OpenAI Key
+We use openai embeddings to find semantic similarity. Hence before building index. Make sure you set the OpenAI Key on the shell.
+
+export OPENAI_API_KEY='your open ai key'
+
 ## Indexing and Search
 [![asciicast](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8.svg)](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8)
 ### Indexing
