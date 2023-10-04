@@ -39,7 +39,7 @@ def split_into_batches(array, batch_size):
     for i in range(0, len(array), batch_size):
         yield array[i:i + batch_size]
 
-def generate_query_embedding(query):
+def generate_query_embedding(query, rate_limit=0):
     """
     Generate an embedding for a query using OpenAI API.
     """
