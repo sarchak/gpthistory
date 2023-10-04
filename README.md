@@ -31,18 +31,33 @@ We use openai embeddings to find semantic similarity. Hence before building inde
 export OPENAI_API_KEY='your open ai key'
 
 ## Indexing and Search
-[![asciicast](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8.svg)](https://asciinema.org/a/ht0KVofl1GZwLgP1SEHKwKzX8)
+
 ### Indexing
 
-The `build_index` command allows you to build an index from your chat data files. The tool extracts relevant text parts from each chat entry and stores them in the index along with their associated chat IDs and section IDs.
+The `build-index` command allows you to build an index from your chat data files. The tool extracts relevant text parts from each chat entry and stores them in the index along with their associated chat IDs and section IDs.
+
+#### Basic Usage
 
 To build an index, run:
 
 ```bash
-gpthistory build_index --file /path/to/conversations.json
+gpthistory build-index --file /path/to/conversations.json
 ```
 
 Replace `/path/to/conversations.json` with the path to your chat data file in JSON format.
+
+#### Rate Limiting
+
+You can optionally add a rate-limiting mechanism to control the frequency of API calls. The `--rate-limit` option lets you specify the sleep time in seconds between API calls, which is useful to prevent hitting rate limits on the OpenAI API.
+
+Here's how to use it:
+
+```bash
+gpthistory build-index --rate-limit 0.002 --file /path/to/conversations.json
+```
+
+Replace `0.002` with the desired sleep time in seconds.
+
 
 ### Searching
 
@@ -62,7 +77,7 @@ The search algorithm uses embeddings to efficiently match the keyword against th
 
 ```bash
 # Build the index from conversations.json
-gpthistory build_index --file conversations.json
+gpthistory build-index --file conversations.json
 
 # Search for conversations related to "chatbot"
 gpthistory search "chatbot"
