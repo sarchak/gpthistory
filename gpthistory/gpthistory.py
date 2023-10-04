@@ -20,8 +20,11 @@ def main():
     pass
 
 @main.command()
+# Add click option for rate-limiting
+@click.option('--rate-limit', type=float, default=0, help='Rate limit for OpenAI API in seconds')
 @click.option('--file', type=click.Path(exists=True), help='Input file')
-def build_index(file):
+# define the build_index function
+def build_index(rate_limit, file):
     """
     Build an index from a given chat data file
     """
@@ -29,11 +32,11 @@ def build_index(file):
     # Write the index to the predefined path
     # Make sure the directory exists
     os.makedirs(os.path.dirname(INDEX_PATH), exist_ok=True)
-    
+
     # Load the chat data from the given file
     with open(file) as f:
         data = json.load(f)
-    
+
     chat_ids = []
     section_ids = []
     texts = []
@@ -67,16 +70,22 @@ def build_index(file):
         rows_only_in_df = merged_df.query('_merge == "left_only"').drop(columns='_merge')
     else:
         rows_only_in_df = df
-    
+
     if incremental and len(rows_only_in_df) > 0:
         logger.info("Only generating embeddings for new conversations to save money.")
-    
+
     # Generate and add embeddings to the index
-    embeddings = generate_embeddings(rows_only_in_df.text.tolist())
+    embeddings = generate_embeddings(rows_only_in_df.text.tolist(), rate_limit)
+    #  ensure that the generate_embeddings function returns an array of the same length as the input and log warning if not
+    if len(embeddings) != len(rows_only_in_df):
+        logger.warning("Number of embeddings generated does not match the number of conversations.")
     rows_only_in_df['embeddings'] = embeddings
-    final_df = pd.concat([rows_only_in_df, current_df])
-    logger.info(f"Total conversations: {len(final_df)}")
-    final_df.to_csv(INDEX_PATH, sep='|', index=False)
+    rows_only_in_df.to_csv(INDEX_PATH, sep='|', mode='a', header=not incremental, index=False)
+    # Log to inform the user about the number of conversations indexed
+    logger.info(f"Conversations indexed: {len(rows_only_in_df)}")
+
+
+
 
 @main.command()
 @click.argument('keyword', required=True)
@@ -91,10 +100,10 @@ def search(keyword):
         df = pd.read_csv(INDEX_PATH, sep='|')
         df['embeddings'] = df.embeddings.apply(lambda x: [float(t) for t in json.loads(x)])
         filtered = df[df.text.str.contains(keyword)]
-        
+
         # Calculate top titles and their corresponding chat IDs
         chat_ids, top_titles, top_scores = calculate_top_titles(df, keyword)
-        
+
         for i, t in enumerate(top_titles):
             logger.info("%s: %s", chat_ids[i], t)
             logger.info("ChatGPT Conversation link: https://chat.openai.com/c/%s", chat_ids[i])

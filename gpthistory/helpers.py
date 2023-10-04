@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import pandas as pd
 import numpy as np
 import openai
@@ -42,31 +43,49 @@ def generate_query_embedding(query):
     """
     Generate an embedding for a query using OpenAI API.
     """
+    
+    import time
+    if rate_limit > 0:
+        time.sleep(rate_limit)
     response = openai.Embedding.create(
         input=[query],
         model="text-embedding-ada-002"
     )
     return response['data'][0]['embedding']
 
-def generate_embeddings(conversations):
+def generate_embeddings(conversations, rate_limit=0):
     """
     Generate embeddings for conversations using OpenAI API.
     """
     embeddings = []
     for i, batch in enumerate(split_into_batches(conversations, 100)):
         logger.info(f"Generating Embeddings for batch: {i + 1}")
+        
+        if rate_limit > 0:
+            time.sleep(rate_limit)
+            # log the time between API calls to verify if your rate-limiting code is functioning as expected
+            logger.info(f"Rate Limit: time between API calls: {rate_limit} seconds")
+         
+
+            
         response = openai.Embedding.create(
-            input=batch,
-            model="text-embedding-ada-002"
-        )
+                input=batch,
+                model="text-embedding-ada-002"
+            )
+        
         tmp_embedding = [row['embedding'] for row in response['data']]
         embeddings += tmp_embedding
+
+    # Debugging: print the number of embeddings generated and the number of conversations
     if len(embeddings) > 0:
         logger.info("Conversations (Chunks) = %d", len(conversations))
         logger.info("Embeddings = %d", len(embeddings))
     else:
         logger.info("No new conversations detected")
+
     return embeddings
+
+
 
 def calculate_top_titles(df, query, top_n=1000):
     """
