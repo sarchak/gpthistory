@@ -62,7 +62,7 @@ The search algorithm uses embeddings to efficiently match the keyword against th
 
 ```bash
 # Build the index from conversations.json
-gpthistory build_index --file conversations.json
+gpthistory build-index --file conversations.json
 
 # Search for conversations related to "chatbot"
 gpthistory search "chatbot"
