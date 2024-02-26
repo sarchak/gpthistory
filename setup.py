@@ -8,7 +8,14 @@ setup(
     author_email="shrikar84@gmail.com",
     packages=find_packages(),
     include_package_data=True,
-    install_requires=["typer", "python-dotenv", "openai", "pandas", "numpy"],
+    install_requires=[
+        "typer",
+        "python-dotenv",
+        "openai",
+        "pandas",
+        "numpy",
+        "rich",
+    ],
     entry_points="""
         [console_scripts]
         gpthistory=gpthistory.gpthistory:main

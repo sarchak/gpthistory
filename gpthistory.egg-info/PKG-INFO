@@ -2,12 +2,12 @@ Metadata-Version: 2.1
 Name: gpthistory
 Version: 0.3
 Summary: A tool for searching through your chatgpt conversation history
-Home-page: UNKNOWN
 Author: Shrikar Archak
 Author-email: shrikar84@gmail.com
-License: UNKNOWN
-Platform: UNKNOWN
 License-File: LICENSE.md
-
-UNKNOWN
-
+Requires-Dist: typer
+Requires-Dist: python-dotenv
+Requires-Dist: openai
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: loguru
