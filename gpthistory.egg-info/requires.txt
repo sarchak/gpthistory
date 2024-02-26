@@ -1,5 +1,6 @@
-Click
+typer
 python-dotenv
 openai
 pandas
 numpy
+loguru

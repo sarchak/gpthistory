@@ -5,3 +5,9 @@ Summary: A tool for searching through your chatgpt conversation history
 Author: Shrikar Archak
 Author-email: shrikar84@gmail.com
 License-File: LICENSE.md
+Requires-Dist: typer
+Requires-Dist: python-dotenv
+Requires-Dist: openai
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: loguru
