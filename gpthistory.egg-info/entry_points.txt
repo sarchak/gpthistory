@@ -1,2 +1,4 @@
-[console_scripts]
-gpthistory = gpthistory.gpthistory:main
+
+        [console_scripts]
+        gpthistory=gpthistory.gpthistory:app
+    

@@ -1,5 +1,5 @@
-Click
-python-dotenv
+numpy
 openai
 pandas
-numpy
+python-dotenv
+typer
