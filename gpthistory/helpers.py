@@ -52,7 +52,7 @@ def generate_query_embedding(query):
     return response.data[0].embedding
 
 
-def generate_embeddings(conversations):
+def genoerate_embeddings(conversations):
     """
     Generate embeddings for conversations using OpenAI API.
     """
